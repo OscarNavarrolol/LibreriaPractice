@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="tableContainer">
+<h2 th:if="${author != null}">Third</h2>
+
+<table class="table table-dark" th:if="${author != null}">
+    <thead class="thead-dark">
+    <tr>
+        <th>idProgram</th>
+        <th>name</th>
+        <th>yearPublished</th>
+        <th>authorId</th>
+        <th>publisherId</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author : ${author}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.yearPublished}"></td>
+        <td th:text="${author.authorId}"></td>
+        <td th:text="${author.publisherId}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2 th:if="${book != null}">second</h2>
+
+<table class="table table-dark" th:if="${book != null}">
+    <thead class="thead-dark">
+    <tr>
+        <th>idProgram</th>
+        <th>name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${book}">
+        <td th:text="${program.idProgram}"></td>
+        <td th:text="${program.name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2 th:if="${publisher != null}">one</h2>
+
+<table class="table table-dark" th:if="${publisher != null}">
+    <thead class="thead-dark">
+    <tr>
+        <th>idProgram</th>
+        <th>name</th>
+        <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="publisher : ${publisher}">
+        <td th:text="${publisher.publisherId}"></td>
+        <td th:text="${publisher.name}"></td>
+        <td th:text="${publisher.location}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<input type="button" value="Change Author" onclick="window.location.href='/author/data'">
+<input type="button" value="Change Publisher" onclick="window.location.href='/publisher/data'">
+<input type="button" value="Change Book" onclick="window.location.href='/book/data'">
+
+</body>
+</html>
