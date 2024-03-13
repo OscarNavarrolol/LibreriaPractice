@@ -25,8 +25,11 @@
         <div class="book" th:each="book : ${book}">
             <h3 th:text="${book.name}"></h3>
             <p>Author: <span th:text="${book.authorId}"></span></p>
+            <p>Publisher: <span th:text="${book.authorName}"></span></p>
             <p>Year of Publication: <span th:text="${book.yearPublished}"></span></p>
             <p>Publisher: <span th:text="${book.publisherId}"></span></p>
+
+            <p>Description: <span th:text="${#strings.substring(book.description, 0, 50) + '...'}"></span></p>
         </div>
     </div>
 </div>

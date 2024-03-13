@@ -13,13 +13,14 @@ header {
 }
 
 h1 {
-    margin-top: 0;
+
+    text-align: center;
 }
 
 nav {
     background-color: #34495e;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 10px;
+    padding: 20px;
     text-align: center;
 }
 

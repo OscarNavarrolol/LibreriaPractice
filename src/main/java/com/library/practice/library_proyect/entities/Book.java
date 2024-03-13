@@ -21,6 +21,38 @@ public class Book {
     @Column(name = "publisher_id")
     private Long publisherId;
 
+    private String description;
+
+    @Transient
+    private String authorName;
+
+    @Transient
+    private String publisherName;
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getPublisherName() {
+        return publisherName;
+    }
+
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }

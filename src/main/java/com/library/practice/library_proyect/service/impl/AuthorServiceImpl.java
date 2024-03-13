@@ -44,4 +44,15 @@ public class AuthorServiceImpl implements AuthorService {
         }
         return null;
     }
+
+    @Override
+    public String getAuthorNameById(Long id) {
+        Author author= authorRepository.findById(id).orElse(null);
+        if (author != null){
+            String nameAuthor = author.getName();
+            return nameAuthor;
+        }
+        return null;
+
+    }
 }

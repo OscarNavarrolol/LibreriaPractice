@@ -16,4 +16,5 @@ public interface AuthorService {
     public void deleteAuthor(Long id);
     public Author updateAuthor(Long id,Author author);
 
+    public String getAuthorNameById(Long id);
 }

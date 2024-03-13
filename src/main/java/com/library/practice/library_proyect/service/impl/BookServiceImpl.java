@@ -40,6 +40,7 @@ public class BookServiceImpl implements BookService {
         Book oldBook = bookRepository.findById(id).orElse(null);
         if (oldBook != null){
             oldBook.setName(book.getName());
+            oldBook.setDescription(book.getDescription());
             oldBook.setAuthorId(book.getAuthorId());
             oldBook.setPublisherId(book.getPublisherId());
             oldBook.setYearPublished(book.getYearPublished());
@@ -57,4 +58,7 @@ public class BookServiceImpl implements BookService {
     public List<Book> getBookByPublisherId(Long id) {
         return bookRepository.getAllByAuthorId(id);
     }
+
+
+
 }

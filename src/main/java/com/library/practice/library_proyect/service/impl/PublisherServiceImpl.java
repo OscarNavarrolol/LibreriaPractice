@@ -47,4 +47,14 @@ public class PublisherServiceImpl implements PublisherService {
         }
         return null;
     }
+
+    @Override
+    public String getPublisherNameById(Long id) {
+        Publisher publisher =publisherRepository.findById(id).orElse(null);
+        if (publisher != null){
+            String namePublisher = publisher.getName();
+            return namePublisher;
+        }
+        return null;
+    }
 }
