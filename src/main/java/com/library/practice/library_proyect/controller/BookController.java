@@ -22,7 +22,12 @@ public class BookController {
     public String dataBook(Model model){
         List<Book> bookList = bookService.getAllBook();
         model.addAttribute("book",bookList);
-        return "PrincipalWeb";
+        return "Catalog";
+    }
+
+    @GetMapping("/contact")
+    public String contactInformation(){
+        return "Contact";
     }
 
 }

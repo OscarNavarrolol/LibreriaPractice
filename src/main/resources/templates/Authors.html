@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to the Library</title>
+    <title>Authors</title>
     <link rel="stylesheet" href="/css/principalWeb.css">
 </head>
 <body>
 <header>
-    <h1>Welcome to the Library</h1>
+    <h1>List of Authors</h1>
 </header>
 <nav>
     <a th:href="@{/author/general}">Home</a>
@@ -18,16 +18,13 @@
     <a th:href="@{/book/contact}">Contact</a>
 </nav>
 <div class="container">
-    <h2>Featured Books</h2>
-    <div class="book-list">
-        <!-- Here you can display featured books -->
-        <div class="book">
-            <h3>Book Name</h3>
-            <p>Author: Author Name</p>
-            <p>Year of Publication: 20XX</p>
-            <p>Publisher: Publisher Name</p>
+    <h2>Complete List of Authors</h2>
+    <div class="author-list">
+        <!-- Iterating over authors from the controller -->
+        <div class="author" th:each="author : ${author}">
+            <h3 th:text="${author.name}"></h3>
+            <p th:text="'Nationality: ' + ${author.nationality}"></p>
         </div>
-        <!-- Repeat this structure for each featured book -->
     </div>
 </div>
 <footer>

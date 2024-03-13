@@ -1,14 +1,16 @@
+<!-- In your HTML file (e.g., catalog.html) -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to the Library</title>
+    <title>Book Catalog</title>
     <link rel="stylesheet" href="/css/principalWeb.css">
 </head>
 <body>
 <header>
-    <h1>Welcome to the Library</h1>
+    <h1>Book Catalog</h1>
 </header>
 <nav>
     <a th:href="@{/author/general}">Home</a>
@@ -18,16 +20,14 @@
     <a th:href="@{/book/contact}">Contact</a>
 </nav>
 <div class="container">
-    <h2>Featured Books</h2>
+    <h2>Complete Catalog</h2>
     <div class="book-list">
-        <!-- Here you can display featured books -->
-        <div class="book">
-            <h3>Book Name</h3>
-            <p>Author: Author Name</p>
-            <p>Year of Publication: 20XX</p>
-            <p>Publisher: Publisher Name</p>
+        <div class="book" th:each="book : ${book}">
+            <h3 th:text="${book.name}"></h3>
+            <p>Author: <span th:text="${book.authorId}"></span></p>
+            <p>Year of Publication: <span th:text="${book.yearPublished}"></span></p>
+            <p>Publisher: <span th:text="${book.publisherId}"></span></p>
         </div>
-        <!-- Repeat this structure for each featured book -->
     </div>
 </div>
 <footer>

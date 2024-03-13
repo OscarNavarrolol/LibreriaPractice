@@ -22,10 +22,11 @@ public class AuthorController {
         return "PrincipalWeb";
     }
 
+
     @GetMapping("/data")
     public String dataAuthor(Model model){
         List<Author> authorList = authorService.getAllAuthor();
         model.addAttribute("author",authorList);
-        return "PrincipalWeb";
+        return "Authors";
     }
 }

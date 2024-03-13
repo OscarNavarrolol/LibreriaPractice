@@ -22,7 +22,7 @@ public class PublisherController {
     public String dataPublisher(Model model){
         List<Publisher> publisherList = publisherService.getAllPublisher();
         model.addAttribute("publisher",publisherList);
-        return "PrincipalWeb";
+        return "Publishers";
     }
 
 }
