@@ -15,4 +15,7 @@ public interface BookRepository extends JpaRepository<Book,Long> {
 
     @Query(value = "SELECT * FROM book b WHERE b.publisher_id = ?1", nativeQuery = true)
     List<Book> getAllByPublisherId(Long id);
+
+    @Query(value = "SELECT * FROM book ORDER BY id DESC", nativeQuery = true)
+    List<Book> getAllByLastBook();
 }

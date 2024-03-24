@@ -16,4 +16,6 @@ public interface BookService {
 
     public List<Book> getBookByAuthorId (Long id);
     public List<Book> getBookByPublisherId (Long id);
+
+    public List<Book> getLastBooks();
 }

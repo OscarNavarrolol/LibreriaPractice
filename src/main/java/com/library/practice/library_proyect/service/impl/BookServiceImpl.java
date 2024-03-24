@@ -1,9 +1,10 @@
 package com.library.practice.library_proyect.service.impl;
 
-import com.library.practice.library_proyect.entities.Author;
 import com.library.practice.library_proyect.entities.Book;
 import com.library.practice.library_proyect.repository.BookRepository;
+import com.library.practice.library_proyect.service.AuthorService;
 import com.library.practice.library_proyect.service.BookService;
+import com.library.practice.library_proyect.service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,16 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private AuthorService authorService;
+    @Autowired
+    private PublisherService publisherService;
 
     @Override
     public List<Book> getAllBook() {
-        return bookRepository.findAll();
+        List<Book> books = bookRepository.findAll();
+        setAuthorsAndPublishersNames(books);
+        return books;
     }
 
     @Override
@@ -56,9 +63,25 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getBookByPublisherId(Long id) {
-        return bookRepository.getAllByAuthorId(id);
+        return bookRepository.getAllByPublisherId(id);
     }
 
+    @Override
+    public List<Book> getLastBooks() {
+        List<Book> books = bookRepository.getAllByLastBook();
+        setAuthorsAndPublishersNames(books);
+        return books;
+    }
 
+    // feature to avoid repetitive code
+    private void setAuthorsAndPublishersNames(List<Book> books) {
+        for (Book book : books) {
+            String authorName = authorService.getAuthorNameById(book.getAuthorId());
+            book.setAuthorName(authorName);
+
+            String publisherName = publisherService.getPublisherNameById(book.getPublisherId());
+            book.setPublisherName(publisherName);
+        }
+    }
 
 }

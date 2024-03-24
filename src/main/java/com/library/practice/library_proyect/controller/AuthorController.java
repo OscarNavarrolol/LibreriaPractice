@@ -17,12 +17,6 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    @GetMapping("/general")
-    public String  principalWeb(){
-        return "PrincipalWeb";
-    }
-
-
     @GetMapping("/data")
     public String dataAuthor(Model model){
         List<Author> authorList = authorService.getAllAuthor();

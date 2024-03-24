@@ -1,6 +1,6 @@
 package com.library.practice.library_proyect.controller;
 
-import com.library.practice.library_proyect.entities.Book;
+
 import com.library.practice.library_proyect.entities.Publisher;
 import com.library.practice.library_proyect.service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;

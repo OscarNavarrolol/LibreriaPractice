@@ -11,7 +11,7 @@
     <h1>Welcome to the Library</h1>
 </header>
 <nav>
-    <a th:href="@{/author/general}">Home</a>
+    <a th:href="@{/book/general}">Home</a>
     <a th:href="@{/book/data}">Catalog</a>
     <a th:href="@{/author/data}">Authors</a>
     <a th:href="@{/publisher/data}">Publishers</a>
@@ -20,14 +20,15 @@
 <div class="container">
     <h2>Featured Books</h2>
     <div class="book-list">
-        <!-- Here you can display featured books -->
-        <div class="book">
-            <h3>Book Name</h3>
-            <p>Author: Author Name</p>
-            <p>Year of Publication: 20XX</p>
-            <p>Publisher: Publisher Name</p>
+
+        <div class="book" th:each="book : ${lastBooks}">
+            <h3 th:text="${book.name}"></h3>
+            <p>Author: <span th:text="${book.authorName}"></span></p>
+            <p>Year of Publication: <span th:text="${book.yearPublished}"></span></p>
+            <p>Publisher: <span th:text="${book.publisherName}"></span></p>
+            <p>Description: <span th:text="${#strings.substring(book.description, 0, 50) + '...'}"></span></p>
         </div>
-        <!-- Repeat this structure for each featured book -->
+
     </div>
 </div>
 <footer>
