@@ -6,6 +6,8 @@ import com.library.practice.library_proyect.service.AuthorService;
 import com.library.practice.library_proyect.service.BookService;
 import com.library.practice.library_proyect.service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -71,6 +73,11 @@ public class BookServiceImpl implements BookService {
         List<Book> books = bookRepository.getAllByLastBook();
         setAuthorsAndPublishersNames(books);
         return books;
+    }
+
+    @Override
+    public Page<Book> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     // feature to avoid repetitive code

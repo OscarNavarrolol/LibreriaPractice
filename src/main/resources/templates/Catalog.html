@@ -28,6 +28,15 @@
             <p>Description: <span th:text="${#strings.substring(book.description, 0, 50) + '...'}"></span></p>
         </div>
     </div>
+    <form th:if="${not book.last}" method="get" th:action="@{/book/data}">
+        <input type="hidden" name="page" th:value="${currentPage + 1}" />
+        <button type="submit">Siguiente</button>
+    </form>
+
+    <form th:if="${not book.first}" method="get" th:action="@{/book/data}">
+        <input type="hidden" name="page" th:value="${currentPage - 1}" />
+        <button type="submit">Atrás</button>
+    </form>
 </div>
 <footer>
     <p>Copyright © 2024 - Library</p>

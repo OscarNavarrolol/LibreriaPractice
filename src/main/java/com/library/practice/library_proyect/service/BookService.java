@@ -1,7 +1,8 @@
 package com.library.practice.library_proyect.service;
 
-import com.library.practice.library_proyect.entities.Author;
+import org.springframework.data.domain.Pageable;
 import com.library.practice.library_proyect.entities.Book;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface BookService {
     public List<Book> getBookByPublisherId (Long id);
 
     public List<Book> getLastBooks();
+
+    public Page<Book> getAllBooks(Pageable pageable);
 }

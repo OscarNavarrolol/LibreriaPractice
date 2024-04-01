@@ -6,10 +6,14 @@ import com.library.practice.library_proyect.service.AuthorService;
 import com.library.practice.library_proyect.service.BookService;
 import com.library.practice.library_proyect.service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -28,8 +32,10 @@ public class BookController {
     }
 
     @GetMapping("/data")
-    public String dataBook(Model model){
-        List<Book> bookList = bookService.getAllBook();
+    public String dataBook(@RequestParam(defaultValue = "0") int page, Model model){
+        Pageable pageable = PageRequest.of(page, 9);
+        Page<Book> bookList = bookService.getAllBooks(pageable);
+        model.addAttribute("currentPage", page);
         model.addAttribute("book",bookList);
         return "Catalog";
     }
